@@ -41,8 +41,8 @@ export default class Gameboard {
     if (y - 1 >= 0) this.board[x][y - 1] = 'no-placed';
     if (y + ship.length < this.size)
       this.board[x][y + ship.length] = 'no-placed';
+    ship.placement = [x, y];
     this.placedShips.push([x, y]);
-    console.log(this.board);
   };
 
   placeShipRandomly = (ship) => {
@@ -73,6 +73,16 @@ export default class Gameboard {
     if (hitResult === 'sunk') {
       if (this.isAllSunk() === true) return console.log('you wins');
     }
+
+    if (hitResult > 0) {
+      if (+x + 1 < this.size && +y + 1 < this.size)
+        this.board[+x + 1][+y + 1] = 'four';
+      if (+x + 1 < this.size && +y - 1 >= 0)
+        this.board[+x + 1][+y - 1] = 'four';
+      if (+x - 1 >= 0 && +y + 1 < this.size)
+        this.board[+x - 1][+y + 1] = 'four';
+      if (+x - 1 >= 0 && +y - 1 >= 0) this.board[+x - 1][+y - 1] = 'four';
+    }
     return hitResult;
   };
 
@@ -84,8 +94,3 @@ export default class Gameboard {
     return result;
   };
 }
-
-// const gameboard1 = new Gameboard();
-// console.log(gameboard1.board);
-// console.log(gameboard1.board.length);
-// console.log(gameboard1.board[0].length);

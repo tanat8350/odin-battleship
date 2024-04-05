@@ -3,5 +3,3 @@ import Player from './player.js';
 import Ship from './ship.js';
 import Gameboard from './gameboard.js';
 import dom from './dom.js';
-
-console.log('hello world');

@@ -37,8 +37,32 @@
     background-color: blue;
   }
 
+  .after-sunk {
+    background-color: pink;
+  }
+
+  .four {
+    background: pink;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .four::after {
+    content: '⚫';
+    font-size: 0.2rem;
+  }
+
   .missed {
     background-color: yellow;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .missed::after {
+    content: 'missed';
+    font-size: 0.59rem;
   }
 
   .hit,

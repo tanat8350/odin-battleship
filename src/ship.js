@@ -12,14 +12,6 @@ export default class Ship {
     }
     return this.hitCount;
   };
+
   isSunk = () => this.sunk;
 }
-
-// const testShip = new Ship(5);
-// testShip.hit();
-// console.log(testShip.isSunk());
-// testShip.hit();
-// testShip.hit();
-// testShip.hit();
-// testShip.hit();
-// console.log(testShip.isSunk());

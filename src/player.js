@@ -1,6 +1,8 @@
 import Ship from './ship.js';
 import Gameboard from './gameboard.js';
 
+// todo iife like initboard
+
 export default class Player {
   constructor(size) {
     this.playerBoard = new Gameboard(size);
@@ -45,14 +47,3 @@ export default class Player {
     this.computerBoard.receiveAttack(x, y);
   }
 }
-
-// const player1 = new Player();
-// player1.computerMove();
-// player1.computerMove();
-// player1.computerMove();
-// console.log(player1.playerBoard);
-// player1.playerMove(4, 4);
-// player1.playerMove(4, 4);
-// player1.playerMove(4, 5);
-// player1.initBoardRandomly(player1.computerBoard);
-// console.log(player1.computerBoard);
