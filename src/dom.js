@@ -1,10 +1,10 @@
-import Player from './player';
+import Game from './game';
 
 const dom = (function () {
   const hackMap = true;
 
   const size = 10;
-  let game = new Player(size);
+  let game = new Game(size);
 
   const spanInfoHead = document.querySelector('.info-head');
   const spanInfo = document.querySelector('.info');
@@ -226,7 +226,7 @@ const dom = (function () {
       board.parentNode.removeChild(board);
     }
     initBoard();
-    game = new Player(size);
+    game = new Game(size);
     renderShip();
     renderShipCom();
     addListenerComputerBoard();

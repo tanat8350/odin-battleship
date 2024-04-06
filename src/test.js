@@ -1,9 +1,9 @@
 import Ship from './ship';
 import Gameboard from './gameboard';
-import Player from './player';
+import Game from './game';
 
-// describe('Player', () => {
-//   const player1 = new Player();
+// describe('Game', () => {
+//   const player1 = new Game();
 //   player1.computerMove();
 
 //   test('computerMove', () => {
