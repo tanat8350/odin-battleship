@@ -116,6 +116,8 @@ const dom = (function () {
     const computerBoard = document.querySelector('.computer-board .grid-board');
     computerBoard.addEventListener('click', (e) => {
       const target = e.target;
+
+      if (!target.classList.contains('grid-item')) return;
       const x = +target.dataset.x;
       const y = +target.dataset.y;
       const result = game.playerMove(x, y);
