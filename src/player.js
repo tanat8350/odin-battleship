@@ -26,14 +26,16 @@ export default class Player {
     });
   }
 
-  checkMove(board, x, y) {
-    if (board[x][y] === 'missed') return false;
-    if (board[x][y] === 'four') return false;
+  checkMove(player, x, y) {
+    if (player.board[x][y] === 'missed') return false;
+    if (player.board[x][y] === 'four') return false;
+    if (player.moveRecord[x][y]) return false;
     return true;
   }
 
   playerMove(x, y) {
-    if (!this.checkMove(this.computerBoard.board, x, y)) return 'invalid';
+    if (!this.checkMove(this.computerBoard, x, y)) return 'invalid';
+    this.computerBoard.moveRecord[x][y] = true;
     return this.computerBoard.receiveAttack(x, y);
   }
 

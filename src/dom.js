@@ -77,7 +77,7 @@ const dom = (function () {
     const result = computerMove.result;
     const x = computerMove.x;
     const y = computerMove.y;
-    console.log(x, y, result);
+
     if (result === 'missed')
       document
         .querySelector(`.player-board .grid-item[data-x="${x}"][data-y="${y}"]`)
