@@ -79,13 +79,16 @@ const dom = (function () {
   };
   renderShipCom();
   const computerBoard = document.querySelector('.computer-board .grid-board');
+  const spanInfoHead = document.querySelector('.info-head');
+  const spanInfo = document.querySelector('.info');
+
   computerBoard.addEventListener('click', (e) => {
     const target = e.target;
     const x = +target.dataset.x;
     const y = +target.dataset.y;
     const result = game.playerMove(x, y);
 
-    if (result === 'sunk') {
+    if (result === 'sunk' || result == 'all sunk') {
       target.classList.add('sunk');
       const shipLength = game.computerBoard.board[x][y].length;
       const shipPlacementX = game.computerBoard.board[x][y].placement[0];
@@ -142,6 +145,11 @@ const dom = (function () {
           )
           .classList.add('after-sunk');
       renderShipCom();
+    }
+
+    if (result === 'all sunk') {
+      spanInfoHead.textContent = 'Result:';
+      spanInfo.textContent = 'Player wins';
     }
 
     if (result > 0) {

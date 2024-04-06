@@ -15,7 +15,7 @@ import Player from './player';
 
 describe('Gameboard', () => {
   const ship2 = new Ship(5);
-  const gameboard2 = new Gameboard();
+  const gameboard2 = new Gameboard('Test user');
   gameboard2.placeShip(ship2, 5, 5);
 
   test('placeShip 5 5', () => {

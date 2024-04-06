@@ -1,5 +1,6 @@
 export default class Gameboard {
-  constructor(size = 10) {
+  constructor(oppName, size = 10) {
+    this.oppName = oppName;
     this.size = size;
     this.board = this.initBoard(this.size);
     this.placedShips = [];
@@ -70,11 +71,12 @@ export default class Gameboard {
       return (this.board[x][y] = 'missed');
 
     const hitResult = this.board[x][y].hit();
-    if (hitResult === 'sunk') {
-      if (this.isAllSunk() === true) return console.log('you wins');
+    if (hitResult.sunk) {
+      if (this.isAllSunk() === true) return 'all sunk';
+      return 'sunk';
     }
 
-    if (hitResult > 0) {
+    if (hitResult.hitCount > 0) {
       if (+x + 1 < this.size && +y + 1 < this.size)
         this.board[+x + 1][+y + 1] = 'four';
       if (+x + 1 < this.size && +y - 1 >= 0)
@@ -83,7 +85,7 @@ export default class Gameboard {
         this.board[+x - 1][+y + 1] = 'four';
       if (+x - 1 >= 0 && +y - 1 >= 0) this.board[+x - 1][+y - 1] = 'four';
     }
-    return hitResult;
+    return hitResult.hitCount;
   };
 
   isAllSunk = () => {

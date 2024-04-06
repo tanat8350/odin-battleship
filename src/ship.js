@@ -8,9 +8,8 @@ export default class Ship {
     this.hitCount++;
     if (this.hitCount === this.length) {
       this.sunk = true;
-      return 'sunk';
     }
-    return this.hitCount;
+    return { hitCount: this.hitCount, sunk: this.sunk };
   };
 
   isSunk = () => this.sunk;
