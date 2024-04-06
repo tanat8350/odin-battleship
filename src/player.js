@@ -6,6 +6,7 @@ export default class Player {
     // oppName, size
     this.playerBoard = new Gameboard('Computer', size);
     this.computerBoard = new Gameboard('Player', size);
+    this.size = size;
     this.initBoardRandomly(this.playerBoard);
     this.initBoardRandomly(this.computerBoard);
   }
@@ -27,24 +28,31 @@ export default class Player {
 
   checkMove(board, x, y) {
     if (board[x][y] === 'missed') return false;
+    if (board[x][y] === 'four') return false;
     return true;
   }
 
   playerMove(x, y) {
-    if (!this.checkMove(this.computerBoard.board, x, y))
-      throw new Error('invalid move');
+    if (!this.checkMove(this.computerBoard.board, x, y)) return 'invalid';
     return this.computerBoard.receiveAttack(x, y);
   }
 
   computerMove() {
-    let x = Math.floor(Math.random() * 10);
-    let y = Math.floor(Math.random() * 10);
+    let x = Math.floor(Math.random() * this.size);
+    let y = Math.floor(Math.random() * this.size);
 
-    while (this.playerMove.board[x][y] === 'missed') {
-      x = Math.floor(Math.random() * 10);
-      y = Math.floor(Math.random() * 10);
+    while (
+      this.playerBoard.board[x][y] === 'missed' ||
+      this.playerBoard.board[x][y] === 'four' ||
+      this.playerBoard.board[x][y] === 'sunk' ||
+      this.playerBoard.moveRecord[x][y]
+    ) {
+      x = Math.floor(Math.random() * this.size);
+      y = Math.floor(Math.random() * this.size);
     }
 
-    this.computerBoard.receiveAttack(x, y);
+    this.playerBoard.moveRecord[x][y] = true;
+
+    return { result: this.playerBoard.receiveAttack(x, y), x, y };
   }
 }

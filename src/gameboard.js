@@ -4,6 +4,7 @@ export default class Gameboard {
     this.size = size;
     this.board = this.initBoard(this.size);
     this.placedShips = [];
+    this.moveRecord = this.initMoveRecord(size);
   }
 
   initBoard = (size) => {
@@ -12,6 +13,14 @@ export default class Gameboard {
       board[i] = new Array(size);
     }
     return board;
+  };
+
+  initMoveRecord = (size) => {
+    const result = new Array(size);
+    for (let i = 0; i < result.length; i++) {
+      result[i] = new Array(size);
+    }
+    return result;
   };
 
   placeShip = (ship, x, y) => {
