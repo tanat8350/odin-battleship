@@ -1,12 +1,12 @@
 import Ship from './ship.js';
 import Gameboard from './gameboard.js';
 
-// todo iife like initboard
-
 export default class Player {
   constructor(size) {
     this.playerBoard = new Gameboard(size);
     this.computerBoard = new Gameboard(size);
+    this.initBoardRandomly(this.playerBoard);
+    this.initBoardRandomly(this.computerBoard);
   }
 
   initBoardRandomly(board) {

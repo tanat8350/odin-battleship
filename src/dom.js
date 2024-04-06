@@ -39,9 +39,6 @@ const dom = (function () {
   };
   initBoard();
 
-  // game.initBoardRandomly(game.playerBoard);
-  // game.initBoardRandomly(game.computerBoard);
-
   const renderShip = () => {
     game.playerBoard.board.forEach((row, x) => {
       row.forEach((col, y) => {
