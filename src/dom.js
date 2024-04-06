@@ -13,6 +13,11 @@ const dom = (function () {
     spanInfo.textContent = body;
   };
 
+  const computerBoardPointer = (event = 'none') => {
+    const divComputerBoard = document.querySelector('.computer-board');
+    divComputerBoard.style.pointerEvents = event;
+  };
+
   let gridBoard = document.querySelectorAll('.grid-board');
   const initBoard = () => {
     gridBoard = document.querySelectorAll('.grid-board');
@@ -81,6 +86,7 @@ const dom = (function () {
       document
         .querySelector(`.player-board .grid-item[data-x="${x}"][data-y="${y}"]`)
         .classList.add('hit');
+      computerBoardPointer();
       return updateInfo('Result:', 'Computer wins');
     }
     if (result > 0 || result === 'sunk') {
@@ -195,6 +201,7 @@ const dom = (function () {
       if (result === 'all sunk') {
         spanInfoHead.textContent = 'Result:';
         spanInfo.textContent = 'Player wins';
+        computerBoardPointer();
       }
 
       if (result > 0) {
@@ -223,6 +230,7 @@ const dom = (function () {
     renderShip();
     renderShipCom();
     addListenerComputerBoard();
+    computerBoardPointer('auto');
     spanInfoHead.textContent = 'Turn:';
     spanInfo.textContent = 'Player';
   });
