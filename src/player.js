@@ -3,9 +3,8 @@ import Gameboard from './gameboard.js';
 
 export default class Player {
   constructor(size) {
-    // oppName, size
-    this.playerBoard = new Gameboard('Computer', size);
-    this.computerBoard = new Gameboard('Player', size);
+    this.playerBoard = new Gameboard(size);
+    this.computerBoard = new Gameboard(size);
     this.size = size;
     this.initBoardRandomly(this.playerBoard);
     this.initBoardRandomly(this.computerBoard);

@@ -1,6 +1,5 @@
 export default class Gameboard {
-  constructor(oppName, size = 10) {
-    this.oppName = oppName;
+  constructor(size = 10) {
     this.size = size;
     this.board = this.initBoard(this.size);
     this.placedShips = [];
